@@ -8,12 +8,32 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tv_title_total_spent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        android:text="Total Spent"
+        android:textSize="32sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_value_total_spent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$1259,26"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_total_spent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_total_spent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_category"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_list_category"
+        app:layout_constraintStart_toStartOf="@+id/tv_value_total_spent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_value_total_spent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
