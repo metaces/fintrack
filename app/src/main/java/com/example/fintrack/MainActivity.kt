@@ -1,8 +1,10 @@
 package com.example.fintrack
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,12 +12,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val rvCategory = findViewById<RecyclerView>(R.id.rv_list_category)
+        val fabCategory = findViewById<FloatingActionButton>(R.id.fab_category)
 
         val adapter = CategoryListAdapter()
         rvCategory.adapter = adapter
         rvCategory.layoutManager = LinearLayoutManager(this)
 
         adapter.submitList(categories)
+
+        fabCategory.setOnClickListener {
+            openCreateCategoryActivity()
+        }
+
+
+
+    }
+
+    private fun openCreateCategoryActivity() {
+        val intent = Intent(this, NewCategoryActivity::class.java)
+        startActivity(intent)
     }
 }
 
