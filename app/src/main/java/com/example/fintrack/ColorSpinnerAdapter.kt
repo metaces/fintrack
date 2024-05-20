@@ -59,4 +59,8 @@ class ColorSpinnerAdapter(context: Context, private val colors: List<String>): A
             else -> 0xFF000000.toInt() // Default to black if unknown color
         }
     }
+
+    fun getColorHex(colorName: String): String {
+        return String.format("#%06X", (0xFFFFFF and getColor(colorName)))
+    }
 }

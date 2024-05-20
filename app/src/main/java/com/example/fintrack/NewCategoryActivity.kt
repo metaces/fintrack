@@ -24,8 +24,9 @@ class NewCategoryActivity : AppCompatActivity() {
 
         colorSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-                val selectedColor = parentView.getItemAtPosition(position).toString()
-                Toast.makeText(this@NewCategoryActivity, "Selected Color: $selectedColor", Toast.LENGTH_SHORT).show()
+                val selectedColorName = parentView.getItemAtPosition(position).toString()
+                val selectedColorHex = adapter.getColorHex(selectedColorName)
+                Toast.makeText(this@NewCategoryActivity, "Selected Color: $selectedColorHex", Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
