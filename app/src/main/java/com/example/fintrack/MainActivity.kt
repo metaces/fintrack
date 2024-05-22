@@ -1,5 +1,6 @@
 package com.example.fintrack
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity import androidx.recyclerview.widget.LinearLayoutManager
@@ -7,6 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var adapter: CategoryListAdapter
+    private val categories = mutableListOf(
+            Category(
+                name = "Wifi",
+                color = "#F54336",
+                total = 152.25f,
+                com.example.fintrack.R.drawable.ic_wifi,
+            )
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -14,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val rvCategory = findViewById<RecyclerView>(R.id.rv_list_category)
         val fabCategory = findViewById<FloatingActionButton>(R.id.fab_category)
 
-        val adapter = CategoryListAdapter()
+        adapter = CategoryListAdapter()
         rvCategory.adapter = adapter
         rvCategory.layoutManager = LinearLayoutManager(this)
 
@@ -24,81 +36,32 @@ class MainActivity : AppCompatActivity() {
             openCreateCategoryActivity()
         }
 
-
-
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_NEW_CATEGORY && resultCode == Activity.RESULT_OK) {
+           data?.let {
+               val name = it.getStringExtra("CATEGORY_NAME")
+               val color = it.getStringExtra("CATEGORY_COLOR")
+               val icon = it.getIntExtra("CATEGORY_ICON", R.drawable.ic_wifi)
+               if (name != null && color != null) {
+                  val newCategory = Category(name, color, 0.0f, icon)
+                   categories.add(newCategory)
+                   adapter.notifyItemInserted(categories.lastIndex)
+               }
+           }
+        }
+    }
+
 
     private fun openCreateCategoryActivity() {
         val intent = Intent(this, NewCategoryActivity::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_CODE_NEW_CATEGORY)
+    }
+
+    companion object {
+        private const val REQUEST_CODE_NEW_CATEGORY = 1
     }
 }
-
-val categories = listOf(
-    Category(
-        name = "Wifi",
-        color = "#000000",
-        total = 152.25f,
-        R.drawable.ic_wifi,
-    ),
-    Category(
-        name = "Energy bill",
-        color = "#000000",
-        total = 252.25f,
-        R.drawable.ic_electricity
-    ),
-    Category(
-        name = "Gas station",
-        color = "#000000",
-        total = 352.25f,
-        R.drawable.ic_gas_station
-    ),
-    Category(
-        name = "Clothes",
-        color = "#000000",
-        total = 52.25f,
-        R.drawable.ic_clothes
-    )
-    ,Category(
-        name = "Rent",
-        color = "#000000",
-        total = 852.25f,
-        R.drawable.ic_home
-    ),
-    Category(
-        name = "Uber",
-        color = "#000000",
-        total = 12.59f,
-        R.drawable.ic_car
-    ),
-    Category(
-        name = "CreditCard",
-        color = "#000000",
-        total = 122.59f,
-        R.drawable.ic_credit_card
-    ),
-    Category(
-        name = "Clothes",
-        color = "#000000",
-        total = 52.25f,
-        R.drawable.ic_clothes
-    )
-    ,Category(
-        name = "Rent",
-        color = "#000000",
-        total = 852.25f,
-        R.drawable.ic_home
-    ),
-    Category(
-        name = "Uber",
-        color = "#000000",
-        total = 12.59f,
-        R.drawable.ic_car
-    ),
-    Category(
-        name = "CreditCard",
-        color = "#000000",
-        total = 122.59f,
-        R.drawable.ic_credit_card
-    ),
-)

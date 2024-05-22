@@ -1,10 +1,13 @@
 package com.example.fintrack
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -30,12 +33,18 @@ class CategoryListAdapter: ListAdapter<Category, CategoryListAdapter.CategoryVie
     //segurar os dados ( data class Category )
     class CategoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val ivIcon = view.findViewById<ImageView>(R.id.imageView_icon)
+        private val ivColor = view.findViewById<ImageView>(R.id.imageView_color)
         private val tvCategoryName = view.findViewById<TextView>(R.id.tv_category_name)
         private val tvCategoryTotalExpense = view.findViewById<TextView>(R.id.tv_category_total_expense)
 
 
         fun bind(category: Category) {
             ivIcon.setImageResource(category.icon)
+
+//            val background = ContextCompat.getDrawable(, R.drawable.roundcorner) as GradientDrawable
+//            background.setColor(Color.parseColor(category.color))
+            ivColor.setColorFilter(Color.parseColor(category.color))
+
             tvCategoryName.text = category.name
             tvCategoryTotalExpense.text = category.total.toString()
         }
