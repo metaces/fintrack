@@ -7,34 +7,85 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fintrack"
+        android:textColor="#66AD61"
+        android:textSize="36sp"
+        android:layout_marginTop="30dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView_outcome"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name"
+        app:srcCompat="@drawable/roundcorner3" />
+
     <TextView
         android:id="@+id/tv_title_total_spent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Total Spent"
+        android:layout_marginTop="0dp"
+        android:text="Outcome"
+        android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_outcome"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/imageView_outcome"
+        app:layout_constraintTop_toTopOf="@+id/imageView_outcome" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <ImageView
+        android:id="@+id/imageView_outcome_total"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name"
+        app:srcCompat="@drawable/roundcorner4" />
+
 
     <TextView
         android:id="@+id/tv_value_total_spent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="R$1259,26"
-        android:textSize="42sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_title_total_spent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_total_spent" />
+        android:textSize="32sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_outcome_total"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_outcome_total"
+        app:layout_constraintStart_toEndOf="@+id/imageView_outcome"
+        app:layout_constraintTop_toTopOf="@+id/imageView_outcome_total" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_category"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="60dp"
         tools:listitem="@layout/item_list_category"
-        app:layout_constraintStart_toStartOf="@+id/tv_value_total_spent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_value_total_spent" />
+        app:layout_constraintStart_toStartOf="@+id/imageView_outcome"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_outcome" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_category"
@@ -42,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#66AD61"
         android:src="@drawable/baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
