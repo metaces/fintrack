@@ -13,6 +13,12 @@
         android:theme="@style/Theme.FinTrack"
         tools:targetApi="31">
         <activity
+            android:name=".NewExpenseCategory"
+            android:exported="false" />
+        <activity
+            android:name=".ListExpenseCategory"
+            android:exported="false" />
+        <activity
             android:name=".NewCategoryActivity"
             android:exported="false" />
         <activity

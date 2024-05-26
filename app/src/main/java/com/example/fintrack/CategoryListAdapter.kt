@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CategoryListAdapter: ListAdapter<Category, CategoryListAdapter.CategoryViewHolder>(CategoryDiffUtils()) {
 
+    private lateinit var onClickListener: (Category) -> Unit
+
 
     //criar a viewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -26,27 +28,31 @@ class CategoryListAdapter: ListAdapter<Category, CategoryListAdapter.CategoryVie
     //ligar os dados a view
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = getItem(position)
-        holder.bind(category)
+        holder.bind(category, onClickListener)
+    }
+
+    fun onClickListener(onClick: (Category) -> Unit) {
+        onClickListener = onClick
     }
 
 
     //segurar os dados ( data class Category )
-    class CategoryViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    class CategoryViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         private val ivIcon = view.findViewById<ImageView>(R.id.imageView_icon)
         private val ivColor = view.findViewById<ImageView>(R.id.imageView_color)
         private val tvCategoryName = view.findViewById<TextView>(R.id.tv_category_name)
         private val tvCategoryTotalExpense = view.findViewById<TextView>(R.id.tv_category_total_expense)
 
-
-        fun bind(category: Category) {
+        fun bind(category: Category, onClick: (Category) -> Unit) {
             ivIcon.setImageResource(category.icon)
-
-//            val background = ContextCompat.getDrawable(, R.drawable.roundcorner) as GradientDrawable
-//            background.setColor(Color.parseColor(category.color))
             ivColor.setColorFilter(Color.parseColor(category.color))
 
             tvCategoryName.text = category.name
-            tvCategoryTotalExpense.text = category.total.toString()
+            tvCategoryTotalExpense.text = "R$"+category.total.toString()
+
+            view.setOnClickListener {
+                onClick.invoke(category)
+            }
         }
     }
 
