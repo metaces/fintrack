@@ -48,7 +48,7 @@ class CategoryListAdapter: ListAdapter<Category, CategoryListAdapter.CategoryVie
             ivColor.setColorFilter(Color.parseColor(category.color))
 
             tvCategoryName.text = category.name
-            tvCategoryTotalExpense.text = "R$"+category.total.toString()
+            tvCategoryTotalExpense.text = "-R$"+category.total.toString()
 
             view.setOnClickListener {
                 onClick.invoke(category)
