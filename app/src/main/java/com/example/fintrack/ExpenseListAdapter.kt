@@ -32,7 +32,7 @@ class ExpenseListAdapter: ListAdapter<Expense, ExpenseListAdapter.ExpenseViewHol
 
         fun bind(expenseCategory: Expense) {
             tvNameExpense.text = expenseCategory.name.toString()
-            tvValueExpense.text = "R$"+expenseCategory.value.toString()
+            tvValueExpense.text = "-R$"+expenseCategory.value.toString()
         }
     }
 

@@ -3,6 +3,8 @@ package com.example.fintrack
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private var categories: List<Category> = emptyList()
     private var totalOutcome: Float = 0.0f
     private lateinit var tvTotalSpent: TextView
+    private lateinit var ivNoData: ImageView
 
     override fun onResume() {
         super.onResume()
@@ -80,13 +83,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    fun getOucomeDatabase() {
-//        GlobalScope.launch(Dispatchers.IO) {
-//            totalOutcome = categoryDao.getTotalOutcome()
-//            tvTotalSpent.text = totalOutcome.toString()
-//        }
-//    }
-
     private fun addCategoryDatabase(categoryEntity: CategoryEntity) {
         GlobalScope.launch(Dispatchers.IO) {
             categoryDao.insertCategory(categoryEntity)
@@ -108,13 +104,18 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             GlobalScope.launch(Dispatchers.Main) {
+                ivNoData = findViewById(R.id.imageView_noData)
+                if(categories.isEmpty()){
+                    ivNoData.visibility = View.VISIBLE
+                }else{
+                    ivNoData.visibility = View.GONE
+                }
                 adapter.submitList(categories)
-                tvTotalSpent.text = totalOutcome.toString()
+                tvTotalSpent.text = "-R$"+totalOutcome.toString()
             }
 
         }
     }
-
 
     private fun openCreateCategoryActivity() {
         val intent = Intent(this, NewCategoryActivity::class.java)

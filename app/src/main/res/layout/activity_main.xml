@@ -5,87 +5,136 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4061AD8D"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/tv_app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fintrack"
-        android:textColor="#66AD61"
-        android:textSize="36sp"
-        android:layout_marginTop="30dp"
-        android:textStyle="normal"
+    <ImageView
+        android:id="@+id/imageView_header"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/headcorner"
+        android:elevation="4dp"
+        android:outlineSpotShadowColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:id="@+id/imageView_outcome"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:id="@+id/imageView_header_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_app_name"
-        app:srcCompat="@drawable/roundcorner3" />
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_app_name"
+        app:layout_constraintStart_toStartOf="@+id/imageView_header"
+        app:layout_constraintTop_toTopOf="@+id/tv_app_name"
+        app:srcCompat="@drawable/baseline_circle_24" />
+
 
     <TextView
-        android:id="@+id/tv_title_total_spent"
+        android:id="@+id/tv_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="Outcome"
-        android:textColor="@color/white"
-        android:textSize="32sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:elevation="4dp"
+        android:text="Fintracker"
+        android:textColor="@color/black"
+        android:textSize="36sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_outcome"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/imageView_outcome"
-        app:layout_constraintTop_toTopOf="@+id/imageView_outcome" />
+        app:layout_constraintStart_toEndOf="@+id/imageView_header_icon"
+        app:layout_constraintTop_toTopOf="@+id/imageView_header" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
 
     <ImageView
-        android:id="@+id/imageView_outcome_total"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:id="@+id/imgeView_container_outcome"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="4dp"
+        android:src="@drawable/outcomecorner"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_header"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_header"
+        app:layout_constraintStart_toStartOf="@+id/imageView_header" />
+
+
+    <ImageView
+        android:id="@+id/imageView_outcome_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tv_app_name"
-        app:srcCompat="@drawable/roundcorner4" />
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_outcome_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_outcome_title"
+        app:layout_constraintTop_toTopOf="@+id/tv_outcome_title"
+        app:srcCompat="@drawable/baseline_arrow_circle_down_24" />
+
+    <TextView
+        android:id="@+id/tv_outcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:elevation="4dp"
+        android:text="Outcome"
+        android:textColor="#3D3D3D"
+        android:textSize="32sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/imgeView_container_outcome"
+        app:layout_constraintStart_toStartOf="@+id/imgeView_container_outcome"
+        app:layout_constraintTop_toTopOf="@+id/imgeView_container_outcome" />
 
 
     <TextView
         android:id="@+id/tv_value_total_spent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R$1259,26"
+        android:elevation="4dp"
+        android:text="-R$1259,26"
+        android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_outcome_total"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_outcome_total"
-        app:layout_constraintStart_toEndOf="@+id/imageView_outcome"
-        app:layout_constraintTop_toTopOf="@+id/imageView_outcome_total" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgeView_container_outcome"
+        app:layout_constraintEnd_toEndOf="@+id/imgeView_container_outcome"
+        app:layout_constraintStart_toStartOf="@+id/imgeView_container_outcome"
+        app:layout_constraintTop_toBottomOf="@+id/tv_outcome_title" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_category"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="60dp"
-        tools:listitem="@layout/item_list_category"
-        app:layout_constraintStart_toStartOf="@+id/imageView_outcome"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_outcome" />
+    <TextView
+        android:id="@+id/tv_title_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Spending Categories"
+        android:textColor="#3D3D3D"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_header" />
+
+
+    <ImageView
+        android:id="@+id/imageView_noData"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="80dp"
+        android:src="@drawable/nodata"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_list" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_category"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_list"
+            tools:listitem="@layout/item_list_category" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_category"
@@ -93,10 +142,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:backgroundTint="#66AD61"
+        android:backgroundTint="#61AD8D"
         android:src="@drawable/baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
